@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pulkit chhabra — portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Rubik:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0f14; --card:#0f1720; --muted:#9aa6b2;
+    --glow1: #7afcff; --glow2: #ff6bcb; --glow3: #ffd166;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:radial-gradient(1200px 600px at 10% 10%, rgba(122,252,255,0.04), transparent), radial-gradient(800px 400px at 90% 80%, rgba(255,107,203,0.03), transparent), var(--bg);color: #e6eef6;-webkit-font-smoothing:antialiased}
+
+  /* layout */
+  .wrap{max-width:1100px;margin:40px auto;padding:28px;display:grid;grid-template-columns: 1fr 360px;gap:28px}
+  @media (max-width:900px){ .wrap{grid-template-columns:1fr;padding:18px;margin:16px auto} }
+
+  /* left column */
+  .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:28px;box-shadow: 0 10px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+
+  .hero{display:flex;gap:18px;align-items:center}
+  .avatar{width:110px;height:110px;border-radius:18px;flex:0 0 110px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--glow1),var(--glow2));box-shadow:0 8px 30px rgba(122,252,255,0.07);}
+  .avatar svg{filter:drop-shadow(0 6px 18px rgba(0,0,0,0.45));}
+
+  .intro h1{font-family:Rubik,Inter;font-size:28px;margin:0 0 6px 0;letter-spacing:0.2px}
+  .name-glow{display:inline-block;padding:6px 10px;border-radius:8px;background:linear-gradient(90deg, rgba(122,252,255,0.06), rgba(255,107,203,0.04));box-shadow:0 6px 24px rgba(122,252,255,0.04);}
+  .intro p{margin:0;color:var(--muted)}
+
+  /* neon headings */
+  h2.section{font-size:14px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin:18px 0 10px}
+  .neon{font-weight:800;font-family:Rubik,Inter;color:white;display:inline-block;padding:4px 10px;border-radius:8px;text-shadow:0 2px 8px rgba(0,0,0,0.6),0 0 16px var(--glow1);}
+
+  /* about */
+  .about{line-height:1.6;color:#cfe9ff}
+  /* timeline / projects */
+  .projects{display:grid;gap:12px}
+  .proj{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:center}
+  .proj .meta{max-width:70%}
+  .proj .meta h3{margin:0;font-size:15px}
+  .proj .meta p{margin:6px 0 0 0;color:var(--muted);font-size:13px}
+  .tag{font-size:12px;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--glow3),rgba(255,255,255,0.02));box-shadow:0 6px 20px rgba(255,209,102,0.05);}
+
+  /* right column */
+  .side{position:sticky;top:28px;height:fit-content}
+  .card.small{padding:18px}
+  .stats{display:flex;gap:12px;flex-wrap:wrap}
+  .stat{flex:1 1 48%;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));padding:10px;border-radius:10px;text-align:center}
+  .stat strong{display:block;font-size:20px}
+  .links{display:flex;gap:8px;margin-top:12px}
+  .btn{padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted);font-weight:600}
+
+  /* glowing accent text */
+  .glow-1{color:var(--glow1);text-shadow:0 2px 18px rgba(122,252,255,0.12),0 0 16px var(--glow1)}
+  .glow-2{color:var(--glow2);text-shadow:0 2px 18px rgba(255,107,203,0.12),0 0 20px var(--glow2)}
+  .glow-3{color:var(--glow3);text-shadow:0 2px 18px rgba(255,209,102,0.12),0 0 18px var(--glow3)}
+
+  /* footer */
+  footer{grid-column:1/-1;text-align:center;color:var(--muted);margin-top:20px;font-size:13px}
+
+  /* micro animations */
+  .pulse{animation:pulse 2.6s infinite}
+  @keyframes pulse{0%{transform:translateY(0);opacity:1}50%{transform:translateY(-4px);opacity:0.98}100%{transform:translateY(0);opacity:1}}
+
+  /* minimal print-friendly
+  */
+  @media (prefers-reduced-motion:reduce){ *{animation:none;transition:none} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <main class="card">
+    <section class="hero">
+      <div class="avatar" aria-hidden>
+        <!-- simple SVG avatar placeholder -->
+        <svg width="72" height="72" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g" x1="0%" x2="100%"><stop offset="0" stop-color="#7afcff"/><stop offset="1" stop-color="#ff6bcb"/></linearGradient>
+          </defs>
+          <rect width="64" height="64" rx="12" fill="url(#g)" />
+          <g transform="translate(8,8)" fill="#08121a">
+            <circle cx="24" cy="20" r="10" fill="#08121a" opacity="0.95" />
+            <rect x="6" y="36" width="36" height="8" rx="4" fill="#08121a" />
+          </g>
+        </svg>
+      </div>
+      <div class="intro">
+        <h1><span class="name-glow glow-1">pulkit chhabra</span></h1>
+        <p class="muted">just another high high-schooler figuring out student life<p>
+      </div>
+    </section>
+
+    <h2 class="section">About</h2>
+    <div class="about">
+      <p>Hello — I’m <strong class="glow-2">pulkit chhabra</strong>. a curious mind on a relentless quest to explore, create, and inspire.</p>
+      <p style="margin-top:10px;color:var(--muted)">From coding intricate ideas into reality, to capturing life’s stories through words, visuals, and philosophy — I’m driven by the thrill of turning imagination into something tangible. I believe in chasing excellence, not trends, and in crafting work that resonates beyond the screen.</p>
+    </div>
+
+    <h2 class="section">Projects</h2>
+    <div class="projects">
+      <div class="proj">
+        <div class="meta">
+          <h3 class="glow-1">Jumping Ball Runner</h3>
+          <p>Single-file HTML game — playful physics and colorful UI.</p>
+        </div>
+        <div class="tag">Game</div>
+      </div>
+
+      <div class="proj">
+        <div class="meta">
+          <h3 class="glow-2">Minimal Blog Template</h3>
+          <p>Fast-loading, typographic-first blog built for writers.</p>
+        </div>
+        <div class="tag">Web</div>
+      </div>
+
+      <div class="proj">
+        <div class="meta">
+          <h3 class="glow-3">Photo Stories</h3>
+          <p>Cinematic photo essays and short films — visual storytelling.</p>
+        </div>
+        <div class="tag">Media</div>
+      </div>
+    </div>
+
+    <h2 class="section">Skills</h2>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
+      <div class="tag">HTML</div><div class="tag">CSS</div><div class="tag">Story telling</div><div class="tag">Video Editing</div><div class="tag" >Photography</div>
+      <div class="tag">Communication</div>
+
+  </main>
+
+  <aside class="side">
+    <div class="card small">
+      <h2 class="section">Contact</h2>
+      <p style="margin:0 0 8px 0;color:var(--muted)">Reach out for collabs or a friendly chat.</p>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:6px">
+        <a class="btn" href="mailto:pulkitchhabra08@gmail.com">hello@pulkit.example</a>
+        <a class="btn" href="https://www.linkedin.com/in/pulkitchhabra08/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div style="margin-top:12px">
+        <div class="stats">
+          <div class="stat"><strong>6+</strong><span style="color:var(--muted);font-size:12px">projects</span></div>
+          <div class="stat" ><strong><a href="https://www.youtube.com/@pulkitchhabra08" underline="none">explore on yt</a></strong><span style="color:var(--muted);font-size:12px" >visual stories</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card small" style="margin-top:14px">
+      <h2 class="section">Small Bio</h2>
+      <p style="margin:0;color:var(--muted);line-height:1.5">High-schooler building things, learning constantly, and trying to make the web feel warmer. Loves cinema, music, and code.</p>
+    </div>
+  </aside>
+
+  <footer>
+    <small>Made with ❤️ — pulkit chhabra</small>
+  </footer>
+</div>
+
+<script>
+// subtle interactive touches
+// glow pulse on name
+const nameEl = document.querySelector('.name-glow'); let hue = 0; setInterval(()=>{ hue = (hue+1)%360; nameEl.style.boxShadow = `0 8px 32px hsla(${hue},90%,60%,0.08)`; },120);
+
+// tiny particle background effect (low cost)
+(function(){ const body = document.body; const c = document.createElement('canvas'); c.style.position='fixed'; c.style.inset='0'; c.style.zIndex='0'; c.style.pointerEvents='none'; c.width = innerWidth; c.height = innerHeight; body.appendChild(c); const g=c.getContext('2d'); let pts=[...Array(45)].map(()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.8+0.4,vx:(Math.random()-0.5)*0.2,vy:(Math.random()-0.5)*0.2})); function tick(){ g.clearRect(0,0,c.width,c.height); for(const p of pts){ p.x+=p.vx; p.y+=p.vy; if(p.x<0) p.x=c.width; if(p.x>c.width) p.x=0; if(p.y<0) p.y=c.height; if(p.y>c.height) p.y=0; g.beginPath(); g.fillStyle = 'rgba(122,252,255,0.06)'; g.arc(p.x,p.y,p.r,0,Math.PI*2); g.fill(); } requestAnimationFrame(tick);} tick(); window.addEventListener('resize',()=>{ c.width=innerWidth; c.height=innerHeight; });})();
+
+// smooth scroll for internal links (if later added)
+if('scrollBehavior' in document.documentElement.style) document.documentElement.style.scrollBehavior='smooth';
+</script>
+</body>
+</html>
